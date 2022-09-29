@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм (простой)»
 
-* Студент: [Vlad Ivanishin](https://up.htmlacademy.ru/javascript/27/user/792583).
-* Наставник: `Неизвестно`.
+- Студент: [Vlad Ivanishin](https://up.htmlacademy.ru/javascript/27/user/792583).
+- Наставник: [Михаил Кислый](https://htmlacademy.ru/profile/smart-grizzly).
 
 ---
 
