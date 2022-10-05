@@ -6,11 +6,11 @@ function getRandomInteger(min, max) {
   }
   return Math.floor(rand);
 }
+
 //функция проверяет строку на максимальную длинну
 function checkMaxLength (str,maxLength) {
   return str.length <= maxLength;
 }
-
 //функция проверяет строку на минимальную и максимальную длинну
 function checkMinMaxLength (str,minLength,maxLength) {
   return str.length >= minLength && str.length <= maxLength;
@@ -27,9 +27,10 @@ const createObject = () => ({
 });
 
 //получаем массим обьектов
+
 const getArrayObjects = Array.from({length: objectCount}, createObject);
 
 //делаем массив от 1 до N
-/* const range = (N) => Array.from({length: N}, (v, k) => k+1);
+// const range = (N) => Array.from({length: N}, (v, k) => k+1);
 //перемешиваем массив
-const arry = Array(25).fill(0).map((e,i)=>i+1)
+//const arry = Array(25).fill(0).map((e,i)=>i+1)
