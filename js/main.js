@@ -17,7 +17,7 @@ function getRandomInteger(min, max) {
 //  return str.length >= minLength && str.length <= maxLength;
 //}
 //количество объектов
-const objectCount = 25;
+const OBJECT_COUNT = 25;
 //
 const createObject = () => ({
   id: getRandomInteger(1,25),
@@ -29,7 +29,7 @@ const createObject = () => ({
 
 //получаем массим обьектов
 // eslint-disable-next-line no-unused-vars
-const getArrayObjects = Array.from({length: objectCount}, createObject);
+const getArrayObjects = Array.from({length: OBJECT_COUNT}, createObject);
 //делаем массив от 1 до N
 // const range = (N) => Array.from({length: N}, (v, k) => k+1);
 //перемешиваем массив
