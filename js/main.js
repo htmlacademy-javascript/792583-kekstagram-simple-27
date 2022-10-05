@@ -8,13 +8,13 @@ function getRandomInteger(min, max) {
 }
 
 //функция проверяет строку на максимальную длинну
-function checkMaxLength (str,maxLength) {
-  return str.length <= maxLength;
-}
+//function checkMaxLength (str,maxLength) {
+//  return str.length <= maxLength;
+//}
 //функция проверяет строку на минимальную и максимальную длинну
-function checkMinMaxLength (str,minLength,maxLength) {
-  return str.length >= minLength && str.length <= maxLength;
-}
+//function checkMinMaxLength (str,minLength,maxLength) {
+//  return str.length >= minLength && str.length <= maxLength;
+//}
 //количество объектов
 const objectCount = 25;
 //
@@ -27,9 +27,8 @@ const createObject = () => ({
 });
 
 //получаем массим обьектов
-
+// eslint-disable-next-line no-unused-vars
 const getArrayObjects = Array.from({length: objectCount}, createObject);
-
 //делаем массив от 1 до N
 // const range = (N) => Array.from({length: N}, (v, k) => k+1);
 //перемешиваем массив
