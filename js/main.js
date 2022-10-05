@@ -11,6 +11,7 @@ function getRandomInteger(min, max) {
 //function checkMaxLength (str,maxLength) {
 //  return str.length <= maxLength;
 //}
+
 //функция проверяет строку на минимальную и максимальную длинну
 //function checkMinMaxLength (str,minLength,maxLength) {
 //  return str.length >= minLength && str.length <= maxLength;

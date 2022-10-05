@@ -19,7 +19,7 @@
   "dependencies": {},
   "scripts": {
     "start": "browser-sync start --server --no-ui --files \"js/**/*.js\"",
-    "eslint": "eslint js/"
+    "lint": "eslint js/"
   },
   "engines": {
     "node": "16.x",
