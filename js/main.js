@@ -1,29 +1,36 @@
-//ссылка на источник
-//(https://learn.javascript.ru/task/random-int-min-max)
 //функция возвращающая случайное целое число из переданного диапазона включительно
 function getRandomInteger(min, max) {
   const rand = min + Math.random() * (max + 1 - min);
-  if (min < 0) {
-    return NaN;
-  } else if (max <= min) {
+  if (min < 0 && max <= min) {
     return NaN;
   }
   return Math.floor(rand);
 }
-getRandomInteger(1, 3);
 
 //функция проверяет строку на максимальную длинну
-function checkMaxLength (str,maxLength) {
-  if (str.length <= maxLength) {
-    return true;
-  } return false;
-}
-checkMaxLength();
+//function checkMaxLength (str,maxLength) {
+//  return str.length <= maxLength;
+//}
 
 //функция проверяет строку на минимальную и максимальную длинну
-function checkMinMaxLength (str,maxLength) {
-  if (str.length >= 20 && str.length <= maxLength) {
-    return true;
-  } return false;
-}
-checkMinMaxLength();
+//function checkMinMaxLength (str,minLength,maxLength) {
+//  return str.length >= minLength && str.length <= maxLength;
+//}
+//количество объектов
+const OBJECT_COUNT = 25;
+//
+const createObject = () => ({
+  id: getRandomInteger(1,25),
+  url: `photos/${getRandomInteger(1,25)}.jpg`,
+  description:'Photo with love',
+  likes:getRandomInteger(15,200),
+  comments:getRandomInteger(0,200),
+});
+
+//получаем массим обьектов
+// eslint-disable-next-line no-unused-vars
+const getArrayObjects = Array.from({length: OBJECT_COUNT}, createObject);
+//делаем массив от 1 до N
+// const range = (N) => Array.from({length: N}, (v, k) => k+1);
+//перемешиваем массив
+//const arry = Array(25).fill(0).map((e,i)=>i+1)
