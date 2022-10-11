@@ -1,4 +1,4 @@
-import { getArrayPictures } from "./data.js";
+import { getArrayPictures } from './data.js';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const picturesContainer = document.querySelector('.pictures');
