@@ -10,6 +10,7 @@ const createPictureObject = () => ({
   comments:getRandomInteger(0,200),
 });
 
-const getArrayPictures = Array.from({length: OBJECT_COUNT}, createPictureObject);
+const getArrayPictures = () => Array.from({length: OBJECT_COUNT}, createPictureObject);
 
 export {getArrayPictures};
+
