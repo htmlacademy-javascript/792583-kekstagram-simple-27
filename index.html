@@ -27,6 +27,7 @@
               class="img-upload__form"
               id="upload-select-image"
               method="post"
+              action="https://27.javascript.pages.academy/kekstagram-simple"
               enctype="multipart/form-data"
               autocomplete="off"
             >
@@ -37,7 +38,6 @@
                   id="upload-file"
                   class="img-upload__input visually-hidden"
                   name="filename"
-                  required
                 />
                 <label
                   for="upload-file"
@@ -99,6 +99,7 @@
                       type="reset"
                       class="img-upload__cancel cancel"
                       id="upload-cancel"
+                      tabindex="0"
                     >
                       Закрыть
                     </button>
@@ -210,6 +211,9 @@
                       class="text__description"
                       name="description"
                       placeholder="Ваш комментарий..."
+                      minlength="20"
+                      maxlength="140"
+                      required
                     ></textarea>
                   </fieldset>
 
@@ -309,6 +313,7 @@
         </div>
       </section>
     </template>
+    <script src="vendor/pristine/pristine.min.js"></script>
     <script src="js/main.js" type="module"></script>
   </body>
 </html>

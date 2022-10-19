@@ -1,16 +1,15 @@
-import { getRandomInteger } from './util.js';
+import { getRandomPositiveInteger, createRandomIdFromRangeGenerator } from './util.js';
 
 const OBJECT_COUNT = 25;
 
 const createPictureObject = () => ({
-  id: getRandomInteger(1,25),
-  url: `photos/${getRandomInteger(1,25)}.jpg`,
-  description:'Photo with love',
-  likes:getRandomInteger(15,200),
-  comments:getRandomInteger(0,200),
+  id: getRandomPositiveInteger(1, 25),
+  url: `photos/${getRandomPositiveInteger(1, 25)}.jpg`,
+  description: 'Photo with love',
+  likes: getRandomPositiveInteger(15, 200),
+  comments: getRandomPositiveInteger(0, 200),
 });
+const getArrayPictures = () => Array.from({ length: OBJECT_COUNT }, createPictureObject);
 
-const getArrayPictures = () => Array.from({length: OBJECT_COUNT}, createPictureObject);
-
-export {getArrayPictures};
+export { getArrayPictures };
 
