@@ -1,11 +1,11 @@
 const orderForm = document.querySelector('.img-upload__form');
 
 
-const pristine = new Pristine(orderForm, {
-  classTo: 'text__description',
-  errorTextParent: 'text__description',
-  errorTextClass: 'img-upload__message',
-});
+// const pristine = new Pristine(orderForm, {
+//   classTo: 'text__description',
+//   errorTextParent: 'text__description',
+//   errorTextClass: 'img-upload__message',
+// });
 
 // orderForm.addEventListener('submit', (evt) => {
 //   evt.preventDefault();

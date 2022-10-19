@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger, createRandomIdFromRangeGenerator } from './util.js';
+import { getRandomPositiveInteger } from './util.js';
 
 const OBJECT_COUNT = 25;
 
