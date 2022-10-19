@@ -1,4 +1,4 @@
-const orderForm = document.querySelector('.img-upload__form');
+// const orderForm = document.querySelector('.img-upload__form');
 
 
 // const pristine = new Pristine(orderForm, {
