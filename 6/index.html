@@ -215,7 +215,9 @@
                       minlength="20"
                       maxlength="140"
                       required
-                    ></textarea>
+                      data-pristine-required-message="Обязательное поле"
+            data-pristine-minlength-message="Минимальная длина 20 символов"
+            data-pristine-maxlength-message="Максимальная длина 140 символов"></textarea>
                   </fieldset>
 
                   <!-- Кнопка для отправки данных на сервер -->
@@ -223,6 +225,7 @@
                     type="submit"
                     class="img-upload__submit"
                     id="upload-submit"
+                    disabled
                   >
                     Опубликовать
                   </button>
