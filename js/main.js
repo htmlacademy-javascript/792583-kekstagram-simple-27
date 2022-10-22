@@ -3,5 +3,6 @@ import { picturesContainer } from './show-photos.js';
 import './user-modal.js';
 import './form-valid.js';
 
+// eslint-disable-next-line no-console
 console.log(getArrayPictures());
 getArrayPictures(picturesContainer);

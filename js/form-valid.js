@@ -22,7 +22,7 @@ orderForm.addEventListener('submit', (evt) => {
   pristine.validate();
 });
 
-textArea.addEventListener('input', (event) => {
+textArea.addEventListener('input', () => {
   if (textArea.value.length >= 20 && textArea.value.length <= 140) {
     if (btnFormSend.hasAttribute('disabled') === true) {
       // btnFormSend.removeAttribute('disabled');
