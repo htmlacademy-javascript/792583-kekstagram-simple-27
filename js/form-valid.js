@@ -1,30 +1,36 @@
-// const orderForm = document.querySelector('.img-upload__form');
+const orderForm = document.querySelector('.img-upload__form');
+const btnFormSend = document.querySelector('#upload-submit');
+const textArea = document.querySelector('.text__description');
 
+const pristine = new Pristine(orderForm, {
+  classTo: 'img-upload__text',
+  errorTextParent: 'img-upload__text',
+});
 
-// const pristine = new Pristine(orderForm, {
-//   classTo: 'text__description',
-//   errorTextParent: 'text__description',
-//   errorTextClass: 'img-upload__message',
-// });
+function validateTextArea(value) {
+  return value.length >= 20 && value.length <= 140;
+}
 
-// orderForm.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
+pristine.addValidator(
+  orderForm.querySelector('#description'),
+  validateTextArea,
+  'От 20 до 140 символов',
+);
 
-//   const isValid = pristine.validate();
-//   if (isValid) {
-//     console.log('Можно отправлять');
-//   } else {
-//     console.log('Форма невалидна');
-//   }
-// });
+orderForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  pristine.validate();
+});
 
-// function validateTextarea(value) {
-//   return value.length >= 20 && value.length <= 140;
-// }
-// pristine.addValidator(orderForm.querySelector('.text__description'), validateTextarea,
-//   'От 20 до 140 символов');
-
-// // orderForm.addEventListener('submit', (evt) => {
-// //   evt.preventDefault();
-// //   pristine.validate();
-// // });
+textArea.addEventListener('input', (event) => {
+  if (textArea.value.length >= 20 && textArea.value.length <= 140) {
+    if (btnFormSend.hasAttribute('disabled') === true) {
+      // btnFormSend.removeAttribute('disabled');
+      btnFormSend.disabled = false;
+    }
+  } else {
+    if (btnFormSend.hasAttribute('disabled') === false) {
+      btnFormSend.disabled = true;
+    }
+  }
+});

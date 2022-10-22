@@ -7,16 +7,9 @@ const getRandomPositiveInteger = (a, b) => {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
-// const checkMaxStringLength = (string, maxLength) => {
-//   if (string.length < maxLength) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
+
 function createRandomIdFromRangeGenerator(min, max) {
   const previousValues = [];
-
   return function () {
     let currentValue = getRandomPositiveInteger(min, max);
     if (previousValues.length >= (max - min + 1)) {
@@ -34,4 +27,8 @@ function createRandomIdFromRangeGenerator(min, max) {
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export { getRandomPositiveInteger, createRandomIdFromRangeGenerator, getRandomArrayElement };
+export {
+  getRandomPositiveInteger,
+  createRandomIdFromRangeGenerator,
+  getRandomArrayElement
+};
