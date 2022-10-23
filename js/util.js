@@ -1,20 +1,37 @@
-//функция возвращающая случайное целое число из переданного диапазона включительно
-function getRandomInteger(min, max) {
-  const rand = min + Math.random() * (max + 1 - min);
-  if (min < 0 && max <= min) {
+const getRandomPositiveInteger = (a, b) => {
+  if (a < 0 || b < 0) {
     return NaN;
   }
-  return Math.floor(rand);
-}
-// //функция проверяет строку на максимальную длинну
-// function checkMaxLength (str,maxLength) {
-//   return str.length <= maxLength;
-// }
-// // //функция проверяет строку на минимальную и максимальную длинну
-// function checkMinMaxLength (str,minLength,maxLength) {
-//   return str.length >= minLength && str.length <= maxLength;
-// }
-//делаем массив от 1 до N
-// const range = (N) => Array.from({length: N}, (v, k) => k+1);
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
-export {getRandomInteger};
+function createRandomIdFromRangeGenerator(min, max) {
+  const previousValues = [];
+  return function () {
+    let currentValue = getRandomPositiveInteger(min, max);
+    if (previousValues.length >= (max - min + 1)) {
+      return null;
+    }
+    while (previousValues.includes(currentValue)) {
+      currentValue = getRandomPositiveInteger(min, max);
+    }
+    previousValues.push(currentValue);
+    return currentValue;
+  };
+}
+
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
+
+export {
+  getRandomPositiveInteger,
+  createRandomIdFromRangeGenerator,
+  getRandomArrayElement,
+  isEscapeKey,
+  isEnterKey
+};

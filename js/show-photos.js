@@ -5,7 +5,7 @@ const picturesContainer = document.querySelector('.pictures');
 const similarPictures = getArrayPictures();
 const picturesListFragment = document.createDocumentFragment();
 
-similarPictures.forEach(({url, likes, comments}) => {
+similarPictures.forEach(({ url, likes, comments }) => {
   const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('.picture__img').setAttribute('src', url);
   pictureElement.querySelector('.picture__likes').textContent = likes;
@@ -15,4 +15,4 @@ similarPictures.forEach(({url, likes, comments}) => {
 });
 picturesContainer.appendChild(picturesListFragment);
 
-export {picturesContainer};
+export { picturesContainer };
