@@ -13,8 +13,6 @@ function createRandomIdFromRangeGenerator(min, max) {
   return function () {
     let currentValue = getRandomPositiveInteger(min, max);
     if (previousValues.length >= (max - min + 1)) {
-      // eslint-disable-next-line no-console
-      console.error(`Перебраны все числа из диапазона от ${min} до ${max}`);
       return null;
     }
     while (previousValues.includes(currentValue)) {
@@ -27,8 +25,13 @@ function createRandomIdFromRangeGenerator(min, max) {
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
+
 export {
   getRandomPositiveInteger,
   createRandomIdFromRangeGenerator,
-  getRandomArrayElement
+  getRandomArrayElement,
+  isEscapeKey,
+  isEnterKey
 };
