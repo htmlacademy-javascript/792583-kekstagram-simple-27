@@ -1,15 +1,16 @@
 const orderForm = document.querySelector('.img-upload__form');
 const btnFormSend = document.querySelector('#upload-submit');
 const textArea = document.querySelector('.text__description');
+const MIN_AMOUNT_TEXT = 20;
+const MAX_AMOUNT_TEXT = 140;
 
 const pristine = new Pristine(orderForm, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
 });
 
-function validateTextArea(value) {
-  return value.length >= 20 && value.length <= 140;
-}
+const validateTextArea = (value) =>
+  value.length >= MIN_AMOUNT_TEXT && value.length <= MAX_AMOUNT_TEXT;
 
 pristine.addValidator(
   orderForm.querySelector('#description'),
@@ -23,9 +24,8 @@ orderForm.addEventListener('submit', (evt) => {
 });
 
 textArea.addEventListener('input', () => {
-  if (textArea.value.length >= 20 && textArea.value.length <= 140) {
+  if (textArea.value.length >= MIN_AMOUNT_TEXT && textArea.value.length <= MAX_AMOUNT_TEXT) {
     if (btnFormSend.hasAttribute('disabled') === true) {
-      // btnFormSend.removeAttribute('disabled');
       btnFormSend.disabled = false;
     }
   } else {

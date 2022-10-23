@@ -1,5 +1,4 @@
-const isEscapeKey = (evt) => evt.key === 'Escape';
-const isEnterKey = (evt) => evt.key === 'Enter';
+import { isEnterKey, isEscapeKey } from './util.js';
 
 const btnFormLoad = document.querySelector('.img-upload__label');
 const formCreateImage = document.querySelector('.img-upload__overlay');
@@ -16,13 +15,14 @@ function openUserModal() {
   formCreateImage.classList.remove('hidden');
   documentBody.classList.add('modal-open');
 
-  document.addEventListener('keydown', onPopupEscKeydown);
+  document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 }
+
 function closeUserModal() {
   formCreateImage.classList.add('hidden');
   documentBody.classList.remove('modal-open');
 
-  document.addEventListener('keydown', onPopupEscKeydown);
+  document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 }
 
 btnFormLoad.addEventListener('click', () => {
