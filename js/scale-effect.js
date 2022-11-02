@@ -4,14 +4,14 @@ const scaleTransform = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
 const SCALE_RANGE = 25;
-const MIN_VALUE = 25;
-const MAX_VALUE = 100;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
 let scaleTransformValue = 100;
 
 scaleTransform.value = `${scaleTransformValue}%`;
 
 btnSmaller.addEventListener('click', () => {
-  if (scaleTransformValue > MIN_VALUE) {
+  if (scaleTransformValue > MIN_SCALE) {
     scaleTransformValue -= SCALE_RANGE;
     scaleTransform.value = `${scaleTransformValue}%`;
     imgUploadPreview.style.transform = `scale(${scaleTransformValue / 100})`;
@@ -19,7 +19,7 @@ btnSmaller.addEventListener('click', () => {
 });
 
 btnBigger.addEventListener('click', () => {
-  if (scaleTransformValue < MAX_VALUE) {
+  if (scaleTransformValue < MAX_SCALE) {
     scaleTransformValue += SCALE_RANGE;
     scaleTransform.value = `${scaleTransformValue}%`;
     imgUploadPreview.style.transform = `scale(${scaleTransformValue / 100})`;
