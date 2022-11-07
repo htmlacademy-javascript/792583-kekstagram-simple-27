@@ -1,13 +1,14 @@
 import { showAlert } from './util.js';
 import { sendData } from './api.js';
 import { showSuccessAlert, showErrorAlert, clearUploadInput } from './user-modal.js';
-import { installOriginEffect, returnOriginScale } from './scale-effect.js';
+import { installOriginEffect, returnOriginScale, resetEffects } from './scale-effect.js';
+
+const MIN_AMOUNT_TEXT = 20;
+const MAX_AMOUNT_TEXT = 140;
 
 const orderForm = document.querySelector('.img-upload__form');
 const btnFormSend = document.querySelector('#upload-submit');
 const textArea = document.querySelector('.text__description');
-const MIN_AMOUNT_TEXT = 20;
-const MAX_AMOUNT_TEXT = 140;
 
 const pristine = new Pristine(orderForm, {
   classTo: 'img-upload__text',
@@ -49,6 +50,7 @@ const setUserFormSubmit = (onSuccess) => {
           installOriginEffect();
           returnOriginScale();
           clearUploadInput();
+          resetEffects();
         },
         () => {
           showAlert('Не удалось отправить форму. Попробуйте ещё раз');
@@ -73,4 +75,7 @@ textArea.addEventListener('input', () => {
   }
 });
 
-export { setUserFormSubmit, deleteComment };
+export {
+  setUserFormSubmit,
+  deleteComment
+};

@@ -25,8 +25,6 @@ function createRandomIdFromRangeGenerator(min, max) {
   };
 }
 
-const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
 
@@ -41,9 +39,7 @@ const showAlert = (message) => {
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {
@@ -54,7 +50,6 @@ const showAlert = (message) => {
 export {
   getRandomPositiveInteger,
   createRandomIdFromRangeGenerator,
-  getRandomArrayElement,
   isEscapeKey,
   isEnterKey,
   showAlert
