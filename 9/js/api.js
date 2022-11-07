@@ -1,4 +1,5 @@
 import { showAlert } from './util.js';
+
 const getData = (onSuccess) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
     .then((response) => {
@@ -34,4 +35,7 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-export { getData, sendData };
+export {
+  getData,
+  sendData
+};

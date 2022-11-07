@@ -1,6 +1,6 @@
 import { isEnterKey, isEscapeKey } from './util.js';
 import { deleteComment } from './form-valid.js';
-import { installOriginEffect, returnOriginScale } from './scale-effect.js';
+import { installOriginEffect, returnOriginScale, resetEffects } from './scale-effect.js';
 
 const btnFormLoad = document.querySelector('.img-upload__label');
 const formCreateImage = document.querySelector('.img-upload__overlay');
@@ -36,6 +36,7 @@ const closeUserModal = () => {
   installOriginEffect();
   returnOriginScale();
   clearUploadInput();
+  resetEffects();
   document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 };
 
@@ -99,5 +100,11 @@ const showErrorAlert = () => {
   document.body.append(errorElement);
 };
 
-export { closeUserModal, openUserModal, showSuccessAlert, showErrorAlert, clearUploadInput };
+export {
+  closeUserModal,
+  openUserModal,
+  showSuccessAlert,
+  showErrorAlert,
+  clearUploadInput
+};
 

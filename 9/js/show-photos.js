@@ -1,8 +1,6 @@
-// import { getArrayPictures } from './data.js';
-
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const picturesContainer = document.querySelector('.pictures');
-// const similarPictures = getArrayPictures();
+
 const renderSimilarList = (similarPictures) => {
   const picturesListFragment = document.createDocumentFragment();
 
@@ -16,6 +14,6 @@ const renderSimilarList = (similarPictures) => {
   });
   picturesContainer.appendChild(picturesListFragment);
 };
+
 export { picturesContainer };
-//
 export { renderSimilarList };
