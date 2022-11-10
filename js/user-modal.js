@@ -25,6 +25,13 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
+const closeErrorModal = () => {
+  document.body.lastChild.remove(errorElement);
+};
+const closeSuccessModal = () => {
+  document.body.lastChild.remove(successElement);
+};
+
 const openUserModal = () => {
   formCreateImage.classList.remove('hidden');
   documentBody.classList.add('modal-open');
@@ -49,6 +56,7 @@ btnFormLoad.addEventListener('keydown', (evt) => {
     openUserModal();
   }
 });
+
 formCloseBtn.addEventListener('click', () => {
   closeUserModal();
 });
@@ -58,21 +66,35 @@ formCloseBtn.addEventListener('keydown', (evt) => {
   }
 });
 
+const clickOnEscSuccess = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeSuccessModal();
+  }
+};
+const clickOnEscError = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeErrorModal();
+  }
+};
+
 const showSuccessAlert = () => {
   document.body.append(successElement);
+
+  document.addEventListener('keydown', clickOnEscSuccess, { once: true });
+};
+const showErrorAlert = () => {
+  document.body.append(errorElement);
+
+  document.addEventListener('keydown', clickOnEscError, { once: true });
 };
 
 successElement.addEventListener('click', () => {
-  document.body.lastChild.remove(successElement);
+  closeSuccessModal();
 });
 
 errorElement.addEventListener('click', () => {
-  document.body.lastChild.remove(errorElement);
+  closeErrorModal();
 });
-
-const showErrorAlert = () => {
-  document.body.append(errorElement);
-};
 
 export {
   closeUserModal,

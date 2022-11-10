@@ -66,6 +66,7 @@ const returnOriginScale = () => {
   scaleInput.value = `${MAX_SCALE}%`;
   image.style.transform = `scale(${MAX_SCALE / 100})`;
 };
+
 btnSmaller.addEventListener('click', () => {
   if (defaultScale > MIN_SCALE) {
     defaultScale -= SCALE_RANGE;
