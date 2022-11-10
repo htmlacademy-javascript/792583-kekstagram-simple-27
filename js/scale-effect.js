@@ -60,10 +60,6 @@ const effectLavel = document.querySelector('.effect-level__value');
 
 let defaultScale = 100;
 
-const installOriginEffect = () => {
-  image.classList.remove(image.classList.item(0));
-  image.classList.add('effects__preview--none');
-};
 scaleInput.value = `${defaultScale}%`;
 
 const returnOriginScale = () => {
@@ -148,7 +144,6 @@ form.addEventListener('change', onFormChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
 export {
-  installOriginEffect,
   returnOriginScale,
   resetEffects
 };

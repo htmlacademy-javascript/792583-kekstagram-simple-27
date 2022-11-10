@@ -1,7 +1,7 @@
 import { showAlert } from './util.js';
 import { sendData } from './api.js';
 import { showSuccessAlert, showErrorAlert, clearUploadInput } from './user-modal.js';
-import { installOriginEffect, returnOriginScale, resetEffects } from './scale-effect.js';
+import { returnOriginScale, resetEffects } from './scale-effect.js';
 
 const MIN_AMOUNT_TEXT = 20;
 const MAX_AMOUNT_TEXT = 140;
@@ -15,14 +15,6 @@ const pristine = new Pristine(orderForm, {
   errorTextParent: 'img-upload__text',
 });
 
-const validateTextArea = (value) =>
-  value.length >= MIN_AMOUNT_TEXT && value.length <= MAX_AMOUNT_TEXT;
-
-pristine.addValidator(
-  orderForm.querySelector('#description'),
-  validateTextArea,
-  'От 20 до 140 символов',
-);
 const blockSubmitButton = () => {
   btnFormSend.disabled = true;
   btnFormSend.textContent = 'Сохраняю...';
@@ -47,7 +39,6 @@ const setUserFormSubmit = (onSuccess) => {
           unblockSubmitButton();
           showSuccessAlert();
           deleteComment();
-          installOriginEffect();
           returnOriginScale();
           clearUploadInput();
           resetEffects();
