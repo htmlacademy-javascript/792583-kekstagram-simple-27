@@ -1,30 +1,5 @@
 const ALERT_SHOW_TIME = 5000;
 
-const getRandomPositiveInteger = (a, b) => {
-  if (a < 0 || b < 0) {
-    return NaN;
-  }
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
-function createRandomIdFromRangeGenerator(min, max) {
-  const previousValues = [];
-  return function () {
-    let currentValue = getRandomPositiveInteger(min, max);
-    if (previousValues.length >= (max - min + 1)) {
-      return null;
-    }
-    while (previousValues.includes(currentValue)) {
-      currentValue = getRandomPositiveInteger(min, max);
-    }
-    previousValues.push(currentValue);
-    return currentValue;
-  };
-}
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 const isEnterKey = (evt) => evt.key === 'Enter';
 
@@ -48,8 +23,6 @@ const showAlert = (message) => {
 };
 
 export {
-  getRandomPositiveInteger,
-  createRandomIdFromRangeGenerator,
   isEscapeKey,
   isEnterKey,
   showAlert

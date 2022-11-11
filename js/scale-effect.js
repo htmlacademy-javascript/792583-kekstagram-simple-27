@@ -60,16 +60,13 @@ const effectLavel = document.querySelector('.effect-level__value');
 
 let defaultScale = 100;
 
-const installOriginEffect = () => {
-  image.classList.remove(image.classList.item(0));
-  image.classList.add('effects__preview--none');
-};
 scaleInput.value = `${defaultScale}%`;
 
 const returnOriginScale = () => {
   scaleInput.value = `${MAX_SCALE}%`;
   image.style.transform = `scale(${MAX_SCALE / 100})`;
 };
+
 btnSmaller.addEventListener('click', () => {
   if (defaultScale > MIN_SCALE) {
     defaultScale -= SCALE_RANGE;
@@ -148,7 +145,6 @@ form.addEventListener('change', onFormChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
 export {
-  installOriginEffect,
   returnOriginScale,
   resetEffects
 };

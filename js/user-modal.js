@@ -1,6 +1,6 @@
 import { isEnterKey, isEscapeKey } from './util.js';
 import { deleteComment } from './form-valid.js';
-import { installOriginEffect, returnOriginScale, resetEffects } from './scale-effect.js';
+import { returnOriginScale, resetEffects } from './scale-effect.js';
 
 const btnFormLoad = document.querySelector('.img-upload__label');
 const formCreateImage = document.querySelector('.img-upload__overlay');
@@ -9,6 +9,9 @@ const formCloseBtn = document.querySelector('#upload-cancel');
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 const uploadInput = document.querySelector('.img-upload__input');
+
+const successElement = successTemplate.cloneNode(true);
+const errorElement = errorTemplate.cloneNode(true);
 
 const clearUploadInput = () => {
   uploadInput.value = '';
@@ -22,10 +25,16 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
+const closeErrorModal = () => {
+  document.body.lastChild.remove(errorElement);
+};
+const closeSuccessModal = () => {
+  document.body.lastChild.remove(successElement);
+};
+
 const openUserModal = () => {
   formCreateImage.classList.remove('hidden');
   documentBody.classList.add('modal-open');
-
   document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 };
 
@@ -33,7 +42,6 @@ const closeUserModal = () => {
   formCreateImage.classList.add('hidden');
   documentBody.classList.remove('modal-open');
   deleteComment();
-  installOriginEffect();
   returnOriginScale();
   clearUploadInput();
   resetEffects();
@@ -48,6 +56,7 @@ btnFormLoad.addEventListener('keydown', (evt) => {
     openUserModal();
   }
 });
+
 formCloseBtn.addEventListener('click', () => {
   closeUserModal();
 });
@@ -56,49 +65,36 @@ formCloseBtn.addEventListener('keydown', (evt) => {
     closeUserModal();
   }
 });
-const successElement = successTemplate.cloneNode(true);
+
+const clickOnEscSuccess = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeSuccessModal();
+  }
+};
+const clickOnEscError = (evt) => {
+  if (isEscapeKey(evt)) {
+    closeErrorModal();
+  }
+};
 
 const showSuccessAlert = () => {
   document.body.append(successElement);
+
+  document.addEventListener('keydown', clickOnEscSuccess, { once: true });
 };
-
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
-    document.body.lastChild.remove(successElement);
-  }
-}, { once: true });
-
-document.addEventListener('keydown', (evt) => {
-  if (isEnterKey(evt)) {
-    document.body.lastChild.remove(successElement);
-  }
-}, { once: true });
-
-successElement.addEventListener('click', () => {
-  document.body.lastChild.remove(successElement);
-});
-
-const errorElement = errorTemplate.cloneNode(true);
-
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
-    document.body.lastChild.remove(errorElement);
-  }
-}, { once: true });
-
-document.addEventListener('keydown', (evt) => {
-  if (isEnterKey(evt)) {
-    document.body.lastChild.remove(errorElement);
-  }
-}, { once: true });
-
-errorElement.addEventListener('click', () => {
-  document.body.lastChild.remove(errorElement);
-}, { once: true });
-
 const showErrorAlert = () => {
   document.body.append(errorElement);
+
+  document.addEventListener('keydown', clickOnEscError, { once: true });
 };
+
+successElement.addEventListener('click', () => {
+  closeSuccessModal();
+});
+
+errorElement.addEventListener('click', () => {
+  closeErrorModal();
+});
 
 export {
   closeUserModal,
