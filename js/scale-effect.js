@@ -52,33 +52,33 @@ const IMAGE_FILTERS = [
 
 const btnSmaller = document.querySelector('.scale__control--smaller');
 const btnBigger = document.querySelector('.scale__control--bigger');
-const scale = document.querySelector('.scale__control--value');
-const image = document.querySelector('.img-upload__preview img');
+const scaleUserImage = document.querySelector('.scale__control--value');
+const userImage = document.querySelector('.img-upload__preview img');
 const form = document.querySelector('.img-upload__form');
-const slider = document.querySelector('.effect-level__slider');
+const effectSlider = document.querySelector('.effect-level__slider');
 const effectLavel = document.querySelector('.effect-level__value');
 
 let defaultScale = 100;
 
 const returnOriginScale = () => {
   defaultScale = 100;
-  scale.value = `${defaultScale}%`;
-  image.style.transform = `scale(${defaultScale / MAX_SCALE})`;
+  scaleUserImage.value = `${defaultScale}%`;
+  userImage.style.transform = `scale(${defaultScale / MAX_SCALE})`;
 };
 
 btnSmaller.addEventListener('click', () => {
   if (defaultScale > MIN_SCALE) {
     defaultScale -= SCALE_RANGE;
-    scale.value = `${defaultScale}%`;
-    image.style.transform = `scale(${defaultScale / MAX_SCALE})`;
+    scaleUserImage.value = `${defaultScale}%`;
+    userImage.style.transform = `scale(${defaultScale / MAX_SCALE})`;
   }
 });
 
 btnBigger.addEventListener('click', () => {
   if (defaultScale < MAX_SCALE) {
     defaultScale += SCALE_RANGE;
-    scale.value = `${defaultScale}%`;
-    image.style.transform = `scale(${defaultScale / MAX_SCALE})`;
+    scaleUserImage.value = `${defaultScale}%`;
+    userImage.style.transform = `scale(${defaultScale / MAX_SCALE})`;
   }
 });
 
@@ -88,8 +88,8 @@ let chosenEffect = DEFAULT_EFFECT;
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
 const updateSlider = () => {
-  slider.classList.remove('hidden');
-  slider.noUiSlider.updateOptions({
+  effectSlider.classList.remove('hidden');
+  effectSlider.noUiSlider.updateOptions({
     range: {
       min: chosenEffect.min,
       max: chosenEffect.max,
@@ -98,7 +98,7 @@ const updateSlider = () => {
     start: chosenEffect.max,
   });
   if (isDefault()) {
-    slider.classList.add('hidden');
+    effectSlider.classList.add('hidden');
   }
 };
 
@@ -111,15 +111,15 @@ const onFormChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
-  image.style.filter = 'none';
-  image.className = '';
+  userImage.style.filter = 'none';
+  userImage.className = '';
   effectLavel.value = '';
   if (isDefault()) {
     return;
   }
-  const sliderValue = slider.noUiSlider.get();
-  image.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
-  image.classList.add(`effects__preview--${chosenEffect.name}`);
+  const sliderValue = effectSlider.noUiSlider.get();
+  userImage.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+  userImage.classList.add(`effects__preview--${chosenEffect.name}`);
   effectLavel.value = sliderValue;
 };
 
@@ -128,7 +128,7 @@ const resetEffects = () => {
   updateSlider();
 };
 
-noUiSlider.create(slider, {
+noUiSlider.create(effectSlider, {
   range: {
     min: DEFAULT_EFFECT.min,
     max: DEFAULT_EFFECT.max,
@@ -141,7 +141,7 @@ noUiSlider.create(slider, {
 updateSlider();
 
 form.addEventListener('change', onFormChange);
-slider.noUiSlider.on('update', onSliderUpdate);
+effectSlider.noUiSlider.on('update', onSliderUpdate);
 
 export {
   returnOriginScale,
