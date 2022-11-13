@@ -15,5 +15,7 @@ const renderSimilarList = (similarPictures) => {
   picturesContainer.appendChild(picturesListFragment);
 };
 
-export { picturesContainer };
-export { renderSimilarList };
+export {
+  picturesContainer,
+  renderSimilarList
+};
