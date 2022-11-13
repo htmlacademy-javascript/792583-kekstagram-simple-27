@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
     <title>Кекстаграм</title>
   </head>
 
@@ -227,7 +228,6 @@
                     type="submit"
                     class="img-upload__submit"
                     id="upload-submit"
-                    disabled
                   >
                     Опубликовать
                   </button>
@@ -303,7 +303,7 @@
       <section class="error">
         <div class="error__inner">
           <h2 class="error__title">Ошибка загрузки файла</h2>
-          <button type="button" class="error__button">
+          <button type="button" class="error__button" tabindex="0">
             Попробовать ещё раз
           </button>
         </div>
@@ -315,7 +315,7 @@
       <section class="success">
         <div class="success__inner">
           <h2 class="success__title">Изображение успешно загружено</h2>
-          <button type="button" class="success__button">Круто!</button>
+          <button type="button" class="success__button" tabindex="0">Круто!</button>
         </div>
       </section>
     </template>
