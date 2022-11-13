@@ -7,8 +7,8 @@ const MIN_AMOUNT_TEXT = 20;
 const MAX_AMOUNT_TEXT = 140;
 
 const orderForm = document.querySelector('.img-upload__form');
-const btnFormSend = document.querySelector('#upload-submit');
-const textArea = document.querySelector('.text__description');
+const btnSendForm = document.querySelector('#upload-submit');
+const textAreaForm = document.querySelector('.text__description');
 
 const pristine = new Pristine(orderForm, {
   classTo: 'img-upload__text',
@@ -16,16 +16,16 @@ const pristine = new Pristine(orderForm, {
 });
 
 const blockSubmitButton = () => {
-  btnFormSend.disabled = true;
-  btnFormSend.textContent = 'Сохраняю...';
+  btnSendForm.disabled = true;
+  btnSendForm.textContent = 'Сохраняю...';
 };
 
 const unblockSubmitButton = () => {
-  btnFormSend.disabled = false;
-  btnFormSend.textContent = 'Сохранить';
+  btnSendForm.disabled = false;
+  btnSendForm.textContent = 'Сохранить';
 };
 const deleteComment = () => {
-  textArea.value = '';
+  textAreaForm.value = '';
 };
 const setUserFormSubmit = (onSuccess) => {
   orderForm.addEventListener('submit', (evt) => {
@@ -54,19 +54,18 @@ const setUserFormSubmit = (onSuccess) => {
   });
 };
 
-textArea.addEventListener('input', () => {
-  if (textArea.value.length >= MIN_AMOUNT_TEXT && textArea.value.length <= MAX_AMOUNT_TEXT) {
-    if (btnFormSend.hasAttribute('disabled') === true) {
-      btnFormSend.disabled = false;
-    }
+textAreaForm.addEventListener('input', () => {
+  if (textAreaForm.value.length >= MIN_AMOUNT_TEXT && textAreaForm.value.length <= MAX_AMOUNT_TEXT) {
+    btnSendForm.disabled = false;
   } else {
-    if (btnFormSend.hasAttribute('disabled') === false) {
-      btnFormSend.disabled = true;
+    if (btnSendForm.hasAttribute('disabled') === false) {
+      btnSendForm.disabled = true;
     }
   }
 });
 
 export {
   setUserFormSubmit,
-  deleteComment
+  deleteComment,
+  btnSendForm
 };

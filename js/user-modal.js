@@ -1,11 +1,11 @@
 import { isEnterKey, isEscapeKey } from './util.js';
-import { deleteComment } from './form-valid.js';
+import { deleteComment, btnSendForm } from './form-valid.js';
 import { returnOriginScale, resetEffects } from './scale-effect.js';
 
-const btnFormLoad = document.querySelector('.img-upload__label');
-const formCreateImage = document.querySelector('.img-upload__overlay');
+const btnLoadForm = document.querySelector('.img-upload__label');
+const modalUploadForm = document.querySelector('.img-upload__overlay');
 const documentBody = document.querySelector('body');
-const formCloseBtn = document.querySelector('#upload-cancel');
+const btnCloseForm = document.querySelector('#upload-cancel');
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 const uploadInput = document.querySelector('.img-upload__input');
@@ -26,41 +26,42 @@ const onPopupEscKeydown = (evt) => {
 };
 
 const closeErrorModal = () => {
-  document.body.lastChild.remove(errorElement);
+  errorElement.remove();
 };
 const closeSuccessModal = () => {
-  document.body.lastChild.remove(successElement);
+  successElement.remove();
 };
 
 const openUserModal = () => {
-  formCreateImage.classList.remove('hidden');
+  modalUploadForm.classList.remove('hidden');
   documentBody.classList.add('modal-open');
+  btnSendForm.disabled = false;
+  returnOriginScale();
   document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 };
 
 const closeUserModal = () => {
-  formCreateImage.classList.add('hidden');
+  modalUploadForm.classList.add('hidden');
   documentBody.classList.remove('modal-open');
   deleteComment();
-  returnOriginScale();
   clearUploadInput();
   resetEffects();
   document.addEventListener('keydown', onPopupEscKeydown, { once: true });
 };
 
-btnFormLoad.addEventListener('click', () => {
+btnLoadForm.addEventListener('click', () => {
   openUserModal();
 });
-btnFormLoad.addEventListener('keydown', (evt) => {
+btnLoadForm.addEventListener('keydown', (evt) => {
   if (isEnterKey(evt)) {
     openUserModal();
   }
 });
 
-formCloseBtn.addEventListener('click', () => {
+btnCloseForm.addEventListener('click', () => {
   closeUserModal();
 });
-formCloseBtn.addEventListener('keydown', (evt) => {
+btnCloseForm.addEventListener('keydown', (evt) => {
   if (isEnterKey(evt)) {
     closeUserModal();
   }
